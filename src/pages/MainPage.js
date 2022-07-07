@@ -30,6 +30,7 @@ class MainPage extends React.Component {
           { Categories }
         </div>
 
+        <CartButtn />
       </div>
     );
   }
