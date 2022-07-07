@@ -1,4 +1,6 @@
 import React from 'react';
+import CartButtn from '../Components/CartButtn';
+/* import CartPage from './CartPage'; */
 
 class MainPage extends React.Component {
   constructor() {
@@ -24,7 +26,7 @@ class MainPage extends React.Component {
               Digite algum termo de pesquisa ou escolha uma categoria.
             </p>
           )}
-        <button type="submit"> as </button>
+        <CartButtn />
       </div>
     );
   }
