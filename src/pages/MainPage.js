@@ -1,4 +1,5 @@
 import React from 'react';
+import Categories from '../components/Categories';
 
 class MainPage extends React.Component {
   constructor() {
@@ -24,6 +25,11 @@ class MainPage extends React.Component {
               Digite algum termo de pesquisa ou escolha uma categoria.
             </p>
           )}
+
+        <div>
+          { Categories }
+        </div>
+
       </div>
     );
   }
