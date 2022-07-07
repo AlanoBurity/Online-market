@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from '../components/Categories';
+import CartButtn from './CartPage';
 
 class MainPage extends React.Component {
   constructor() {
@@ -29,7 +30,6 @@ class MainPage extends React.Component {
         <div>
           { Categories }
         </div>
-
         <CartButtn />
       </div>
     );
