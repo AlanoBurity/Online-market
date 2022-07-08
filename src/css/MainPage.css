@@ -1,0 +1,23 @@
+.header-input {
+  border: 1px dashed green;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+.render-body {
+  border: 1px dashed black;
+  display: flex;
+}
+
+.list-itens {
+  border: 1px dashed red;
+  display: flex;
+  flex-basis: 78%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.input-search {
+  width: 75vh;
+}
