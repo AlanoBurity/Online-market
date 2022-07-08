@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import '../css/Categories.css';
 
 class Categories extends React.Component {
   render() {
@@ -7,6 +8,7 @@ class Categories extends React.Component {
     return (
       <div>
         <button
+          className="button-categories"
           type="button"
           data-testid="category"
         >
