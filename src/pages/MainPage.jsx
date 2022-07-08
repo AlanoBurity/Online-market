@@ -1,7 +1,11 @@
 import React from 'react';
 import Categories from '../components/Categories';
 import CartButtn from '../components/CartButtn';
-import { getCategories, getProductsFromTerm } from '../services/api';
+import {
+  getCategories,
+  getProductsFromTerm,
+  getProductsCategories,
+} from '../services/api';
 import '../css/MainPage.css';
 import CardItem from '../components/CardItem';
 
@@ -32,12 +36,20 @@ class MainPage extends React.Component {
     return searchList;
   }
 
+  generateListCategory = async ({ target: { id } }) => {
+    // const { targetCategory } = this.state;
+    const searchList = await getProductsCategories(id);
+    this.setState({ listaProdutos: searchList.results });
+    // return searchList;
+  }
+
   onInputChange = ({ target: { value } }) => {
     this.setState({ inputSearch: value });
   }
 
   render() {
     const { listaProdutos, categoryList, inputSearch } = this.state;
+    // console.log(categoryList);
     return (
       <div>
         <div className="header-input">
@@ -65,6 +77,7 @@ class MainPage extends React.Component {
                 key={ id }
                 name={ name }
                 id={ id }
+                getId={ this.generateListCategory }
               />))}
           </div>
           <div className="list-itens">
@@ -76,6 +89,7 @@ class MainPage extends React.Component {
                   title={ title }
                   price={ price }
                   thumbnail={ thumbnail }
+                  // testId={}
                 />))
               : (
                 <p data-testid="home-initial-message">

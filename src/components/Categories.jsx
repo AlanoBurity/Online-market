@@ -4,13 +4,15 @@ import '../css/Categories.css';
 
 class Categories extends React.Component {
   render() {
-    const { name } = this.props;
+    const { name, id, getId } = this.props;
     return (
       <div>
         <button
           className="button-categories"
           type="button"
           data-testid="category"
+          id={ id }
+          onClick={ getId }
         >
           { name }
         </button>
@@ -20,7 +22,9 @@ class Categories extends React.Component {
 }
 
 Categories.propTypes = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  getId: PropTypes.func.isRequired,
 };
 
 export default Categories;
