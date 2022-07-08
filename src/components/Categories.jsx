@@ -11,7 +11,6 @@ class Categories extends React.Component {
           data-testid="category"
         >
           { name }
-
         </button>
       </div>
     );
