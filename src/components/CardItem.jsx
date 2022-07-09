@@ -7,30 +7,32 @@ export default class CardItem extends Component {
   render() {
     const { id, title, price, thumbnail } = this.props;
     return (
-      <Link to={ `/ItemPage/${id}` }>
-        <div
-          className="cart-item"
-          name={ title }
-          id={ id }
-          data-testid="product"
-        >
+      <Link data-testid="product-detail-link" to={ `/ItemPage/${id}` }>
+        <div>
           <div
-            className="title-item"
+            className="cart-item"
+            name={ title }
+            id={ id }
+            data-testid="product"
           >
-            {title}
+            <div
+              className="title-item"
+            >
+              {title}
 
+            </div>
+            <img
+              src={ thumbnail }
+              className="img-item"
+              alt={ title }
+            />
+            <p
+              className="price-item"
+            >
+              {`R$ ${price.toFixed(2)}`}
+
+            </p>
           </div>
-          <img
-            src={ thumbnail }
-            className="img-item"
-            alt={ title }
-          />
-          <p
-            className="price-item"
-          >
-            {`R$ ${price.toFixed(2)}`}
-
-          </p>
         </div>
       </Link>
     );

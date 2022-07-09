@@ -11,7 +11,7 @@ export default class Routes extends Component {
         <Switch>
           <Route exact path="/" component={ MainPage } />
           <Route path="/CartPage" component={ CartPage } />
-          <Route path="/ItemPage" component={ ItemPage } />
+          <Route path="/ItemPage/:id" component={ ItemPage } />
         </Switch>
       </div>
     );
