@@ -22,7 +22,6 @@ export default class ItemPage extends Component {
 
    render() {
      const { productId } = this.state;
-     console.log(productId);
      return (
        <div>
          <h3 data-testid="product-detail-name">{ productId.title }</h3>
@@ -30,7 +29,7 @@ export default class ItemPage extends Component {
            alt="Imagem produto"
            src={ productId.thumbnail }
          />
-         <p>{productId.price }</p>
+         <p>{`R$ ${productId.price}`}</p>
        </div>
      );
    }

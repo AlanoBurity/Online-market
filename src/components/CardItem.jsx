@@ -4,25 +4,11 @@ import '../css/CardItem.css';
 import { Link } from 'react-router-dom';
 
 export default class CardItem extends Component {
-  // constructor() {
-  //   super();
-
-  //   this.state = {
-  //     getIt: '',
-  //   };
-  // }
-
-  // handleClick = (event) => {
-  //   this.focus()
-  //   }
-  // }
-  // focus = () => this.ref.focus;
-
   render() {
     const { id, title, price, thumbnail } = this.props;
     return (
-      <Link to={ `/ItemPage/${id}` }>
-        <div onClick={ this.handleClick }>
+      <Link data-testid="product-detail-link" to={ `/ItemPage/${id}` }>
+        <div>
           <div
             className="cart-item"
             name={ title }

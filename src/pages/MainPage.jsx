@@ -17,6 +17,7 @@ class MainPage extends React.Component {
       listaProdutos: [],
       categoryList: [],
       inputSearch: '',
+      productId: '',
     };
   }
 
@@ -36,11 +37,13 @@ class MainPage extends React.Component {
     return searchList;
   }
 
+  detailsProduct = async ({ target: { id } }) => {
+    this.setState({ productId: id });
+  }
+
   generateListCategory = async ({ target: { id } }) => {
-    // const { targetCategory } = this.state;
     const searchList = await getProductsCategories(id);
     this.setState({ listaProdutos: searchList.results });
-    // return searchList;
   }
 
   onInputChange = ({ target: { value } }) => {
@@ -48,8 +51,7 @@ class MainPage extends React.Component {
   }
 
   render() {
-    const { listaProdutos, categoryList, inputSearch } = this.state;
-    // console.log(categoryList);
+    const { listaProdutos, categoryList, inputSearch, productId } = this.state;
     return (
       <div>
         <div className="header-input">
@@ -86,10 +88,12 @@ class MainPage extends React.Component {
                 <CardItem
                   key={ id }
                   id={ id }
+                  productId={ productId }
                   title={ title }
                   price={ price }
                   thumbnail={ thumbnail }
-                  // testId={}
+                  value={ productId }
+                  onClick={ this.detailsProduct }
                 />))
               : (
                 <p data-testid="home-initial-message">
