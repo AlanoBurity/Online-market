@@ -1,6 +1,6 @@
 import React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
-import MainPage from './pages/MainPage';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './pages/Routes';
 import './App.css';
 import CartPage from './pages/CartPage';
 import ItemPage from './pages/ItemPage';
@@ -13,6 +13,7 @@ function App() {
         <Route path="/CartPage" component={ CartPage } />
         <Route path="/ItemPage" component={ ItemPage } />
       </Switch>
+      <Routes />
     </BrowserRouter>
   );
 }

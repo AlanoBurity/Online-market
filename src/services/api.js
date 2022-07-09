@@ -16,6 +16,12 @@ export async function getProductsFromTerm(query) {
   return requestJson;
 }
 
+export async function getProductsCategories(categoryId) {
+  const request = await fetch(`https://api.mercadolibre.com/sites/MLB/search?category=${categoryId}`);
+  const requestJson = await request.json();
+  return requestJson;
+}
+
 export async function getProductId(productId) {
   const request = await fetch(`https://api.mercadolibre.com/items/${productId}`);
   const requestJson = await request.json();
