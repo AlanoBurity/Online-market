@@ -5,12 +5,11 @@ import { Link } from 'react-router-dom';
 
 export default class CardItem extends Component {
   render() {
-    const { id, title, price, thumbnail } = this.props;
+    const { id, title, price, thumbnail, saveProductsLocalStorage } = this.props;
     return (
-      <Link data-testid="product-detail-link" to={ `/ItemPage/${id}` }>
-        <div>
+      <div className="cart-item">
+        <Link data-testid="product-detail-link" to={ `/ItemPage/${id}` }>
           <div
-            className="cart-item"
             name={ title }
             id={ id }
             data-testid="product"
@@ -33,8 +32,22 @@ export default class CardItem extends Component {
 
             </p>
           </div>
-        </div>
-      </Link>
+        </Link>
+        <button
+          type="button"
+          value={ id }
+          data-testid="product-add-to-cart"
+          onClick={ () => saveProductsLocalStorage({
+            id,
+            qtd: 1,
+            title,
+            price,
+            thumbnail,
+          }) }
+        >
+          Adicionar ao carrinho
+        </button>
+      </div>
     );
   }
 }
@@ -44,4 +57,5 @@ CardItem.propTypes = {
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  saveProductsLocalStorage: PropTypes.string.isRequired,
 };
