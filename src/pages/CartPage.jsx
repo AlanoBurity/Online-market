@@ -6,8 +6,8 @@ export default class CartPage extends Component {
     super();
     this.state = {
       cardList: true,
-      idProduct: [],
-      quant: [],
+      // idProduct: [],
+      // quant: [],
       list: [],
     };
   }
@@ -26,6 +26,13 @@ export default class CartPage extends Component {
         list: this.receiveLocalStorage('productCart'),
       });
     }
+
+    // handleClick = () => {
+    //   const
+    //   this.setState({
+    //     quant:
+    //   })
+    // }
 
     render() {
       const { cardList, list } = this.state;
@@ -46,7 +53,17 @@ export default class CartPage extends Component {
                       src={ thumbnail }
                     />
                     <p>{`R$ ${price}`}</p>
-                    <input type="number" data-testid="shopping-cart-product-quantity" />
+                    {/* <input
+                      type="number"
+                      value={ qtd }
+                      onClick={ this.handleClick }
+                      data-testid="shopping-cart-product-quantity"
+                    /> */}
+                    <p
+                      data-testid="shopping-cart-product-quantity"
+                    >
+                      {qtd}
+                    </p>
                   </div>
                 ))
               )
