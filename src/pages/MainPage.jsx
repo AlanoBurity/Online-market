@@ -25,6 +25,17 @@ class MainPage extends React.Component {
     this.findCategorys();
   }
 
+  saveProductsLocalStorage = (productParams) => {
+    if (localStorage.getItem('productCart')) {
+      const cartProducts = [...(JSON.parse(localStorage.getItem('productCart')))];
+      localStorage.setItem('productCart', JSON
+        .stringify([...cartProducts, productParams]));
+    } else {
+      localStorage.setItem('productCart', JSON
+        .stringify([productParams]));
+    }
+  }
+
   findCategorys = async () => {
     const results = await getCategories();
     this.setState({ categoryList: results });
@@ -94,6 +105,7 @@ class MainPage extends React.Component {
                   thumbnail={ thumbnail }
                   value={ productId }
                   onClick={ this.detailsProduct }
+                  saveProductsLocalStorage={ this.saveProductsLocalStorage }
                 />))
               : (
                 <p data-testid="home-initial-message">

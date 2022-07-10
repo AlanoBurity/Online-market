@@ -3,6 +3,7 @@
   border-radius: 7px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 10px;
   width: 140px;
 }
