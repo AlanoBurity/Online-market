@@ -57,5 +57,5 @@ CardItem.propTypes = {
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  saveProductsLocalStorage: PropTypes.string.isRequired,
+  saveProductsLocalStorage: PropTypes.func.isRequired,
 };
