@@ -5,7 +5,7 @@ export default class CartPage extends Component {
   constructor() {
     super();
     this.state = {
-      cardList: true,
+      cardList: false,
       // idProduct: [],
       // quant: [],
       list: [],
@@ -16,15 +16,24 @@ export default class CartPage extends Component {
     this.saveList();
   }
 
-  receiveLocalStorage = (item) => JSON.parse(localStorage.getItem(item));
+  receiveLocalStorage = (item) => {
+    if (localStorage.getItem(item)) return JSON.parse(localStorage.getItem(item));
+    return [];
+  }
 
-  getCartPageProducts = () => this
-    .map();
+  // getCartPageProducts = () => this
+  //   .map();
 
     saveList = () => {
       this.setState({
         list: this.receiveLocalStorage('productCart'),
+      }, () => {
+        const { list } = this.state;
+        if (list.length > 0) {
+          this.setState({ cardList: true });
+        }
       });
+      // cardList: true,
     }
 
     // handleClick = () => {
@@ -42,7 +51,7 @@ export default class CartPage extends Component {
             !cardList
               ? (
                 <span data-testid="shopping-cart-empty-message">
-                  Seu carrinho esta vazio
+                  Seu carrinho está vazio
                 </span>
               ) : (
                 list.map(({ id, qtd, title, price, thumbnail }) => (
@@ -54,11 +63,11 @@ export default class CartPage extends Component {
                     />
                     <p>{`R$ ${price}`}</p>
                     {/* <input
-                      type="number"
-                      value={ qtd }
-                      onClick={ this.handleClick }
-                      data-testid="shopping-cart-product-quantity"
-                    /> */}
+                        type="number"
+                        value={ qtd }
+                        onClick={ this.handleClick }
+                        data-testid="shopping-cart-product-quantity"
+                      /> */}
                     <p
                       data-testid="shopping-cart-product-quantity"
                     >
