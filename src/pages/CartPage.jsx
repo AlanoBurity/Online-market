@@ -48,11 +48,11 @@ export default class CartPage extends Component {
                       src={ thumbnail }
                     />
                     <p>{`R$ ${price}`}</p>
-                    {/* <input
+                    {/*  <input
                         type="number"
                         value={ qtd }
                         onClick={ this.handleClick }
-                        data-testid="shopping-cart-product-quantity"
+                        data-testid="shopping-cart-product-quantity"a
                       /> */}
                     <p
                       data-testid="shopping-cart-product-quantity"

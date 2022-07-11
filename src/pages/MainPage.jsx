@@ -7,7 +7,7 @@ import {
   getProductsCategories,
 } from '../services/api';
 import '../css/MainPage.css';
-import CardItem from '../components/CardItem';
+import ContainerItem from '../components/ContainerItem';
 
 class MainPage extends React.Component {
   constructor() {
@@ -96,7 +96,7 @@ class MainPage extends React.Component {
           <div className="list-itens">
             {listaProdutos.length > 0
               ? listaProdutos.map(({ id, title, price, thumbnail }) => (
-                <CardItem
+                <ContainerItem
                   key={ id }
                   id={ id }
                   productId={ productId }
