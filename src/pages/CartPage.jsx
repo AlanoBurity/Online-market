@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-/* import { getProductId } from '../services/api'; */
 
 export default class CartPage extends Component {
   constructor() {
     super();
     this.state = {
       cardList: false,
-      // idProduct: [],
-      // quant: [],
       list: [],
     };
   }
@@ -21,9 +18,6 @@ export default class CartPage extends Component {
     return [];
   }
 
-  // getCartPageProducts = () => this
-  //   .map();
-
     saveList = () => {
       this.setState({
         list: this.receiveLocalStorage('productCart'),
@@ -33,15 +27,7 @@ export default class CartPage extends Component {
           this.setState({ cardList: true });
         }
       });
-      // cardList: true,
     }
-
-    // handleClick = () => {
-    //   const
-    //   this.setState({
-    //     quant:
-    //   })
-    // }
 
     render() {
       const { cardList, list } = this.state;

@@ -18,7 +18,6 @@ export default class CardItem extends Component {
               className="title-item"
             >
               {title}
-
             </div>
             <img
               src={ thumbnail }
