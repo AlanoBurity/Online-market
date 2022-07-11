@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AmountProduct from '../components/AmountProduct';
 
 export default class CartPage extends Component {
   constructor() {
@@ -41,25 +42,14 @@ export default class CartPage extends Component {
                 </span>
               ) : (
                 list.map(({ id, qtd, title, price, thumbnail }) => (
-                  <div key={ id }>
-                    <p data-testid="shopping-cart-product-name">{ title }</p>
-                    <img
-                      alt="Imagem produto"
-                      src={ thumbnail }
-                    />
-                    <p>{`R$ ${price}`}</p>
-                    {/*  <input
-                        type="number"
-                        value={ qtd }
-                        onClick={ this.handleClick }
-                        data-testid="shopping-cart-product-quantity"a
-                      /> */}
-                    <p
-                      data-testid="shopping-cart-product-quantity"
-                    >
-                      {qtd}
-                    </p>
-                  </div>
+                  <AmountProduct
+                    key={ id }
+                    id={ id }
+                    qtd={ qtd }
+                    title={ title }
+                    price={ price }
+                    thumbnail={ thumbnail }
+                  />
                 ))
               )
           }
