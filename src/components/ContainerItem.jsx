@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import '../css/CardItem.css';
+import '../css/ContainerItem.css';
 import { Link } from 'react-router-dom';
 
-export default class CardItem extends Component {
+export default class ContainerItem extends Component {
   render() {
     const { id, title, price, thumbnail, saveProductsLocalStorage } = this.props;
     return (
@@ -51,7 +51,7 @@ export default class CardItem extends Component {
   }
 }
 
-CardItem.propTypes = {
+ContainerItem.propTypes = {
   id: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,

@@ -52,7 +52,7 @@ export default class CartPage extends Component {
                         type="number"
                         value={ qtd }
                         onClick={ this.handleClick }
-                        data-testid="shopping-cart-product-quantity"
+                        data-testid="shopping-cart-product-quantity"a
                       /> */}
                     <p
                       data-testid="shopping-cart-product-quantity"
