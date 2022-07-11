@@ -48,7 +48,7 @@ export default class CartPage extends Component {
                       src={ thumbnail }
                     />
                     <p>{`R$ ${price}`}</p>
-                    {/* <input
+                    {/*  <input
                         type="number"
                         value={ qtd }
                         onClick={ this.handleClick }
