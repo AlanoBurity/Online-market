@@ -49,6 +49,8 @@ export default class ItemPage extends Component {
       this.setState({
         [name]: value,
       });
+      console.log(name);
+      console.log(value);
     }
 
     render() {
@@ -108,11 +110,11 @@ export default class ItemPage extends Component {
               </label>
 
               <div onChange={ this.handleChangeAvaliation }>
-                <input type="radio" data-testid="1-rating" />
-                <input type="radio" data-testid="2-rating" />
-                <input type="radio" data-testid="3-rating" />
-                <input type="radio" data-testid="4-rating" />
-                <input type="radio" data-testid="5-rating" />
+                <input type="radio" data-testid="1-rating" value="1" />
+                <input type="radio" data-testid="2-rating" value="2" />
+                <input type="radio" data-testid="3-rating" value="3" />
+                <input type="radio" data-testid="4-rating" value="4" />
+                <input type="radio" data-testid="5-rating" value="5" />
               </div>
 
               <br />
