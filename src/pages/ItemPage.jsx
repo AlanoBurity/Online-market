@@ -12,6 +12,8 @@ export default class ItemPage extends Component {
       price: '',
       thumbnail: '',
       productId: [],
+      emailUser: '',
+      avaliationText: '',
     };
   }
 
@@ -31,49 +33,111 @@ export default class ItemPage extends Component {
     }
   }
 
-   getProduct = async (id) => {
-     const data = await getProductId(id);
-     this.setState({
-       id: data.id,
-       title: data.title,
-       price: data.price,
-       thumbnail: data.thumbnail,
-       productId: data,
-     });
-   }
+    getProduct = async (id) => {
+      const data = await getProductId(id);
+      this.setState({
+        id: data.id,
+        title: data.title,
+        price: data.price,
+        thumbnail: data.thumbnail,
+        productId: data,
+      });
+    }
 
-   render() {
-     const { productId, id, price, title, thumbnail } = this.state;
-     return (
-       <div>
-         <div>
-           <CartButtn />
-         </div>
-         <div>
-           <h3 data-testid="product-detail-name">{ productId.title }</h3>
-           <img
-             alt="Imagem produto"
-             src={ productId.thumbnail }
-           />
-           <p>{`R$ ${productId.price}`}</p>
-           <button
-             type="button"
-             data-testid="product-detail-add-to-cart"
-             onClick={ () => this.saveProductsLocalStorage({
-               id,
-               qtd: 1,
-               title,
-               price,
-               thumbnail,
-             }) }
-           >
-             Adicionar ao carrinho
+    handleChangeAvaliation = ({ target }) => {
+      const { name, value } = target;
+      this.setState({
+        [name]: value,
+      });
+    }
 
-           </button>
-         </div>
-       </div>
-     );
-   }
+    render() {
+      const {
+        productId,
+        id,
+        price,
+        title,
+        thumbnail,
+        emailUser,
+        avaliationText,
+      } = this.state;
+
+      return (
+        <div>
+          <div>
+            <CartButtn />
+          </div>
+          <div>
+            <h3 data-testid="product-detail-name">{ productId.title }</h3>
+            <img
+              alt="Imagem produto"
+              src={ productId.thumbnail }
+            />
+            <p>{`R$ ${productId.price}`}</p>
+            <button
+              type="button"
+              data-testid="product-detail-add-to-cart"
+              onClick={ () => this.saveProductsLocalStorage({
+                id,
+                qtd: 1,
+                title,
+                price,
+                thumbnail,
+              }) }
+            >
+              Adicionar ao carrinho
+
+            </button>
+          </div>
+
+          <div>
+            Avaliações
+            <br />
+
+            <form action="">
+              <label htmlFor="input-email">
+                email:
+                <input
+                  value={ emailUser }
+                  name="emailUser"
+                  id="input-email"
+                  type="email"
+                  data-testid="product-detail-email"
+                  onChange={ this.handleChangeAvaliation }
+                />
+              </label>
+
+              <div onChange={ this.handleChangeAvaliation }>
+                <input type="radio" data-testid="1-rating" />
+                <input type="radio" data-testid="2-rating" />
+                <input type="radio" data-testid="3-rating" />
+                <input type="radio" data-testid="4-rating" />
+                <input type="radio" data-testid="5-rating" />
+              </div>
+
+              <br />
+
+              <textarea
+                data-testid="product-detail-evaluation"
+                value={ avaliationText }
+                name="avaliationText"
+                id="input-evaluation"
+                onChange={ this.handleChangeAvaliation }
+              />
+
+              <button
+                type="button"
+                data-testid="submit-review-btn"
+                onClick={ this.handleClick }
+              >
+                Avaliar
+              </button>
+            </form>
+
+          </div>
+        </div>
+      );
+    }
 }
 
 ItemPage.propTypes = {
