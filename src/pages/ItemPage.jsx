@@ -14,6 +14,9 @@ export default class ItemPage extends Component {
       productId: [],
       emailUser: '',
       avaliationText: '',
+      starRating: 0, // esse é o estado dos radio buttons que confesso não estao funcionando muito bem
+      wasSubmit: false, // esse é o estado do bUtÃOO que se for true vai fazer o "submit" que seria salvar na lista ou deveria pelo menos kkkk
+      evaluationList: [], // essa é lista de avaliação que ta dando erro mas nao sei onde
     };
   }
 
@@ -44,13 +47,32 @@ export default class ItemPage extends Component {
       });
     }
 
-    handleChangeAvaliation = ({ target }) => {
+    handleChangeAvaliation = ({ target }) => { // função generica para controlar os estados
       const { name, value } = target;
       this.setState({
         [name]: value,
       });
-      console.log(name);
-      console.log(value);
+    }
+
+    // essa função deve pegar todas as informações d avaliação e salvar no array da lista de avaliação
+    handleClick = () => {
+      const {
+        wasSubmit,
+        evaluationList, // essa é lista de avaliação que ta dando erro mas nao sei onde
+        emailUser,
+        avaliationText,
+        starRating, // esse é o estado dos radio buttons que confesso não estao funcionando muito bem
+      } = this.state;
+
+      if (wasSubmit === true) { // checagem do estado do button
+        this.setState({
+          evaluationList: [ // aqui salvaria as informações no array
+            emailUser,
+            avaliationText,
+            starRating,
+          ],
+        });
+      }
     }
 
     render() {
@@ -62,7 +84,11 @@ export default class ItemPage extends Component {
         thumbnail,
         emailUser,
         avaliationText,
+        evaluationList,
+        starRating,
       } = this.state;
+
+      const { handleClick } = this.props;
 
       return (
         <div>
@@ -95,7 +121,6 @@ export default class ItemPage extends Component {
           <div>
             Avaliações
             <br />
-
             <form action="">
               <label htmlFor="input-email">
                 email:
@@ -108,17 +133,14 @@ export default class ItemPage extends Component {
                   onChange={ this.handleChangeAvaliation }
                 />
               </label>
-
               <div onChange={ this.handleChangeAvaliation }>
-                <input type="radio" data-testid="1-rating" value="1" />
-                <input type="radio" data-testid="2-rating" value="2" />
-                <input type="radio" data-testid="3-rating" value="3" />
-                <input type="radio" data-testid="4-rating" value="4" />
-                <input type="radio" data-testid="5-rating" value="5" />
+                <input type="radio" name="1-rating" data-testid="1-rating" value="1" />
+                <input type="radio" name="2-rating" data-testid="2-rating" value="2" />
+                <input type="radio" name="3-rating" data-testid="3-rating" value="3" />
+                <input type="radio" name="4-rating" data-testid="4-rating" value="4" />
+                <input type="radio" name="5-rating" data-testid="5-rating" value="5" />
               </div>
-
               <br />
-
               <textarea
                 data-testid="product-detail-evaluation"
                 value={ avaliationText }
@@ -126,16 +148,31 @@ export default class ItemPage extends Component {
                 id="input-evaluation"
                 onChange={ this.handleChangeAvaliation }
               />
-
               <button
                 type="button"
                 data-testid="submit-review-btn"
                 onClick={ this.handleClick }
+                value={ handleClick }
               >
                 Avaliar
               </button>
             </form>
+          </div>
 
+          <div>
+            {evaluationList.length > 0
+              ? evaluationList.map((item) => (
+                // <div>
+                //   <p>{ item.emailUser }</p>
+                //   <p>{ item.avaliationText }</p> // sou burro não sei usar o map ainda
+                //   <p>{ item.starRating }</p>         mas acho que deu pra entnder a ideia ;)
+                // </div>
+              )
+              ) : (
+                <p>
+                  Não exitem avaliações ainda.
+                </p>
+              )}
           </div>
         </div>
       );
@@ -149,4 +186,5 @@ ItemPage.propTypes = {
     ).isRequired,
     }.isRequired,
   ).isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
